@@ -205,8 +205,7 @@ def main():
             elif selected_model == "XGBoost":
                 prediction = xgb_model.predict(scaled_input)
             elif selected_model == "Neural Network":
-                prediction = nn_model.predict(scaled_input, verbose=0)
-                st.write(prediction.shape, prediction[0].shape, type(prediction[0]))
+                prediction = nn_model.predict(scaled_input, verbose=0)[0]
 
             st.metric("Predicted Stability Score", f"{prediction[0]:.2f}")
             st.plotly_chart(create_gauge(prediction[0]), use_container_width=True)
